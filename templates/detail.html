@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title> <!--#網頁名稱-->
+</head>
+
+
+<body>
+
+<table>  <!--建立表格-->
+    <thead>  <!--<thead>:表頭-->
+    <tr>
+        <th>#id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+        <th>update_time</th>
+
+    </tr>
+    </thead>
+    <tbody>  <!--{{表格內容}}-->
+    <tr>
+        <td> {{ row_data.id }} </td>
+        <td> {{ row_data.name }} </td>
+        <td> {{ row_data.address }} </td>
+        <td> {{ row_data.phone }} </td>
+        <td> {{ row_data.update_time }} </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+
+</html>

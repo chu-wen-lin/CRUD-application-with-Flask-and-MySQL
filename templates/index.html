@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DbHelper</title> <!--#網頁名稱-->
+</head>
+
+<style>
+    h1 {
+        color: lightblue;
+        background-color: silver;
+    }
+
+    div {
+        background-color: #aeddf1;
+    }
+</style>
+
+<body>  <!--要呈現在網頁上的東西，都夾在body裡-->
+<h1>{{ page_title }}</h1>
+<small>{{ today }}</small>
+<h2>依ID排序，前10筆(最新的)文章：</h2>
+<table>  <!--建立表格-->
+    <thead>  <!--<thead>:表頭-->
+    <tr>
+        <th>#id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>  <!--{{表格內容}}-->
+    {% for row in rows %}
+    <tr>
+        <td>
+            <a href="{{ url_for('detail', _id= row.id) }}">   <!--<a>:連結 href:根目錄後面的連結長相-->
+                {{ row.id }}
+            </a>
+        </td>
+        <td>{{ row.name }}</td>
+        <td>{{ row.address }}</td>
+        <td><a href="{{ url_for('update_row', _id=row.id) }}">edit</a></td>
+        <td><a href="{{ url_for('delete_row', _id=row.id) }}">delete</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+
+<!--<form action="select" method="POST">-->
+<!--    <label>輸入ID以查詢</label>-->
+<!--    <input type="text" name="id" required><br>-->
+<!--    <button>確認</button>-->
+<!--</form>-->
+
+</body>
+
+</html>
+
+
+
+<!--以下為javascript ajax-->
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> &lt;!&ndash;類似import&ndash;&gt;-->
+<!--<script>  &lt;!&ndash;要在網頁上做什麼事，用javascript&ndash;&gt;-->
+<!--function sendID() {-->
+<!--    input_id = document.getElementById('input_id').value;-->
+<!--    // console.log(input_id)-->
+<!--    $.ajax({-->
+<!--        url: '/get_data_from_id',-->
+<!--        data: {-->
+<!--            input: input_id,-->
+<!--        },-->
+<!--        type: 'post',-->
+<!--        success: function (result) {-->
+<!--            alert('今天很熱')-->
+<!--            document.getElementById('show_info_id').innerHTML = result.ID + '<br>' + result.Name + '<br>' + result.Phone-->
+<!--        }-->
+<!--    })-->
+<!--}-->
+
+<!--function sendCity() {-->
+<!--    input_city = document.getElementById('input_city').value;-->
+<!--    $.ajax({-->
+<!--        url: '/get_data_from_city',-->
+<!--        data: {-->
+<!--            input_city: input_city,-->
+<!--        },-->
+<!--        type: 'post',-->
+<!--        success: function (result) {-->
+<!--            document.getElementById('show_info_city').innerHTML = result.ID + '<br>' + result.Name-->
+<!--        }-->
+<!--    })-->
+<!--}-->
+
+<!--function sendID_delete() {-->
+<!--    input_id_d = document.getElementById('input_id_d').value;-->
+<!--    $.ajax({-->
+<!--        url: '/delete_data_by_id',-->
+<!--        data: {-->
+<!--            input: input_id_d,-->
+<!--        },-->
+<!--        type: 'post',-->
+<!--        success: function (result) {-->
+<!--            alert(result)-->
+<!--        }-->
+<!--    })-->
+<!--}-->
+<!--</script>-->
+
+<!--輸入ID以查找資料 : <input id="input_id" value="1234"/><br> &lt;!&ndash;input是產生輸入框 <br>是換行 &ndash;&gt;-->
+<!--<a type="button" onclick="sendID()">確認</a>-->
+<!--點下'確認'後會叫script裡的sendID函數做事-->
+
+<!--<div id="show_info_id"></div>&lt;!&ndash;呈現資料&ndash;&gt;-->
+<!--輸入縣市名(前兩字)以查找前10筆該縣市資料 : <input id="input_city"/><br>-->
+<!--<button onclick="sendCity()">確認</button> 點下'確認'後會叫script裡的sendCity函數做事-->
+
+<!--<div id="show_info_city"></div>&lt;!&ndash;呈現資料&ndash;&gt;-->
+<!--輸入ID以刪除資料：<input id="input_id_d"/><br>-->
+<!--<button onclick="sendID_delete()">確認</button>-->
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update data</title> <!--#網頁名稱-->
+</head>
+
+<body>
+請輸入要更新的資料：
+<form action="{{ url_for('update_row', _id = row_data_abc.id ) }}" method="post">
+
+<table>  <!--建立表格-->
+    <thead>  <!--<thead>:表頭-->
+    <tr>
+        <th>#id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+
+    </tr>
+    </thead>
+    <tbody>  <!--{{表格內容}}-->
+    <tr> <!--填入原本的資料值-->
+        <td> <input type="text" name="id" value="{{ row_data_abc.id }}" required> </td>
+        <td> <input type="text" name="name" value="{{ row_data_abc.name }}" required> </td>
+        <td>  <input type="text" name="address" value="{{ row_data_abc.address }}" required> </td>
+        <td> <input type="text" name="phone" value="{{ row_data_abc.phone }}" required> </td>
+    </tr>
+    </tbody>
+</table>
+<button type="submit">確認</button>
+</form>
+
+</body>
+
+</html>

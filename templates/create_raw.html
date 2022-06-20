@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create raw</title> <!--#網頁名稱-->
+</head>
+
+<body>
+請輸入要建立的資料：
+<form action="{{url_for('create_row')}}" method="POST">
+<table>  <!--建立表格-->
+    <thead>  <!--<thead>:表頭-->
+    <tr>
+        <th>#id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+
+    </tr>
+    </thead>
+    <tbody>  <!--{{表格內容}}-->
+    <tr>
+        <td> <input type="text" name="id" required> </td>
+        <td> <input type="text" name="name" required> </td>
+        <td>  <input type="text" name="address" required> </td>
+        <td> <input type="text" name="phone" required> </td>
+    </tr>
+    </tbody>
+</table>
+<button type="submit">確認</button>
+</form>
+
+</body>
+
+</html>

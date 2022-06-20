@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete raw</title>
+</head>
+
+<body>
+您想刪除的資料：
+<table>  <!--建立表格-->
+    <thead>  <!--<thead>:表頭-->
+    <tr>
+        <th>#id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+
+    </tr>
+    </thead>
+    <tbody>  <!--{{表格內容}}-->
+    <tr>  <!--填入原本的資料值-->
+        <td> {{ row_data.id }} </td>
+        <td> {{ row_data.name }} </td>
+        <td> {{ row_data.address }} </td>
+        <td> {{ row_data.phone }} </td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="{{ url_for('delete_row', _id = row_data.id ) }}" method="post">
+    <button type="submit">確認刪除</button>
+    <a href="{{ url_for('home') }}">回首頁</a>
+</form>
+
+</body>
+</html>
